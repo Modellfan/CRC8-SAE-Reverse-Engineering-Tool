@@ -50,7 +50,7 @@ ACAN_T4_Settings settings(500 * 1000);
 
 ## Uploading
 
-1. Open `BMWi3CRC.ino` in Arduino IDE.
+1. Open `CRC8SAE.ino` in Arduino IDE.
 2. Select:
    - Board: Teensy 4.0 or 4.1
    - USB Type: Serial
@@ -131,8 +131,9 @@ Use a serial console (115200 baud) to interact.
    - `mode learn` to find CRC parameters
    - `status` to view progress
    - `export` or `export fast` once learned
-5. Use `mode validate` or `mode validate_fast` for live validation.
-6. Use `mode bench` to compare normal vs fast implementation timing.
+5. Copy the exported data into the right file and recompile
+6. Use `mode validate` or `mode validate_fast` for live validation.
+7. Use `mode bench` to compare normal vs fast implementation timing.
    - Adjust iterations with `bench iters N` for precision.
 
 ---
@@ -141,7 +142,7 @@ Use a serial console (115200 baud) to interact.
 
 Example high-resolution timing (averaged over iterations):
 ```
-BENCH id=0x1A3 len=8 iters=1000 | normal=92 cyc (153 ns) | fast=60 cyc (100 ns) | delta=32 cyc (53 ns)
+BENCH id=0x106 len=8 iters=1000 | normal=434 cyc (723 ns) | fast=92 cyc (153 ns) | delta=342 cyc (570 ns)
 ```
 
 ---
@@ -171,7 +172,7 @@ BENCH id=0x1A3 len=8 iters=1000 | normal=92 cyc (153 ns) | fast=60 cyc (100 ns) 
 
 | File | Description |
 |------|--------------|
-| `BMWi3CRC.ino` | Main sketch and console |
+| `CRC8SAE.ino` | Main sketch and console |
 | `crc8_sae_learner.h/.cpp` | Learner logic per CAN ID |
 | `crc8_sae_user_example.h` | Normal validator |
 | `crc8_sae_user_example_fast.h` | LUT validator |
@@ -184,19 +185,8 @@ BENCH id=0x1A3 len=8 iters=1000 | normal=92 cyc (153 ns) | fast=60 cyc (100 ns) 
 - Always test on a safe CAN setup (bench first).
 - Do not replay frames directly on a live vehicle network unless you know what they do.
 
----
-
-## License
-
-Use an open-source license of your choice (MIT / Apache-2.0 recommended).
-
----
 
 ## Credits
 
 - ACAN_T4 by Pierre Molinaro  
 - Teensy 4.x platform by PJRC  
-
----
-
-End of File
