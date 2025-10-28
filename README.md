@@ -40,7 +40,7 @@ ACAN_T4_Settings settings(500 * 1000);
 - ACAN_T4 library (install via Library Manager or from GitHub)
 
 **Project files:**
-- BMWi3CRC.ino (main sketch)
+- CRC8SAE.ino (main sketch)
 - crc8_sae_learner.h / .cpp
 - crc8_sae_user_example.h
 - crc8_sae_user_example_fast.h
